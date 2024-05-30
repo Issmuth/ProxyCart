@@ -1,9 +1,14 @@
 <?php
-
 require_once 'baseModel.php';
+use \Doctrine\ORM\Mapping as ORM;
+use \Doctrine\DBAL\Types\Types;
 
+#[ORM\Entity]
 class City extends BaseModel {
+    #[ORM\Column(type: Types::STRING, nullable: false)]
     public $name = "";
+    
+    #[ORM\Column(type: Types::STRING, nullable: false)]
     public $country = "";
     
     public function __construct($kwargs = []) {

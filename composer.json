@@ -1,5 +1,17 @@
 {
     "require": {
-        "ramsey/uuid": "^4.7"
+        "ramsey/uuid": "^4.7",
+        "illuminate/database": "^10.48",
+        "illuminate/events": "^10.48",
+        "doctrine/orm": "^3.2",
+        "doctrine/dbal": "*",
+        "symfony/cache": "^6.4",
+        "doctrine/migrations": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+             "Controllers\\": "controllers/",
+             "Models\\": "models/"
+        }
     }
 }

@@ -1,12 +1,20 @@
 <?php
-
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 use Ramsey\Uuid\Uuid;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
+#[ORM\MappedSuperclass]
 class BaseModel {
-    public $id;
-    public $created_at;
-    public $updated_at;
+    #[ORM\Id]
+    #[ORM\Column(type:Types::STRING, nullable: false)]
+    protected $id;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    protected $created_at;
+    
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    protected $updated_at;
 
     public function __construct($kwargs = []) {
         $this->id = Uuid::uuid4()->__toString();
@@ -21,15 +29,16 @@ class BaseModel {
         }
     }
 
+
     public function getId() {
         return $this->id;
     }
+
 
     public function __toString()
     {
         return "[" . get_class($this) . "] " . $this->getId() . PHP_EOL . var_dump($this);
     }
-
 }
 
 ?>

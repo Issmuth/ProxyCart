@@ -12,10 +12,26 @@ class FileStorage {
     //File Storage class
     private $path = "file.json";
     private $objects = [];  // an associative array of all the created objects
+    public $classes = [
+        "User", "BaseModel",
+        "City", "Route",
+        "Order", "Product",
+        "Dispatch"
+    ];
 
-    public function all() {
+    public function all($class = null) {
         // returns all the objects in the storage
-        return $this->objects;
+        $objects = [];
+        if (!$class) {
+            return $this->objects;
+        }
+
+        foreach($this->objects as $key => $value) {
+            if (explode('.', $key)[0] == $class) {
+                $objects[$key] = $value;
+            }
+        }
+        return $objects;
     }
 
     public function new($object) {
@@ -44,6 +60,33 @@ class FileStorage {
             $class = explode('.', $key)[0];
             $this->objects[$key] = new $class($value);
         }
+    }
+
+    public function get($class, $id) {
+        //retrieves an object using id and class
+        $objects = $this->all($class);
+        $key = $class . '.' . $id;
+        if (isset($objects[$key])) {
+            return $objects[$key];
+        }
+        return null;
+    }
+
+    public function delete($object) {
+        // deletes an object if it exists in objects property.
+        $key = get_class($object) . '.' . $object->id;
+        if (isset($this->objects[$key])) {
+            unset($this->objects[$key]);
+        }
+    }
+    
+    public function count($class = null) {
+        if ($class) {
+            $objects = $this->all($class);
+        } else {
+            $objects = $this->all();
+        }
+        return count($objects);
     }
 }
 ?>
