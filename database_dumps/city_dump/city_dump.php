@@ -8,7 +8,7 @@ use Doctrine\ORM\Tools\SchemaTool;
 function dump_cities() {
     $db = new DBStorage();
 
-    $jsonCities = file_get_contents('countries.json');
+    $jsonCities = file_get_contents(__DIR__ . '/countries.json');
     $countries = json_decode($jsonCities, true);
     foreach ($countries as $country => $cities) {
         foreach ($cities as $city) {
@@ -18,5 +18,4 @@ function dump_cities() {
     }
     $db->save();
 }
-dump_cities();
 ?>

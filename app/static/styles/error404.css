@@ -1,35 +1,142 @@
 body {
-    margin: 0;
-    position: relative; /* Add this to make positioning relative to the body */
+  margin: 0;
 }
 
-
-.error404 {
-    color: #AAD2C4;
-    text-align: center;
-    font-family: "Nunito", 'Arial Rounded', sans-serif;
-    font-size: calc(15vw + 5vh);
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;  
-    position: relative; 
-    z-index: 0; 
-    margin: auto;
-    top: 50px;
-    padding: 0;
-}
-
-.container {
+@media (min-width: 768px) {
+  .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
+    width: 100vw;
+    height: auto;
+  }
 
-.illustration {
+  .error404 {
+    color: #aad2c4;
+    font-family: "Nunito", "Arial Rounded", sans-serif;
+    font-style: normal;
+    font-size: 16em;
+    font-weight: 700;
+    line-height: 100%;
+    position: absolute;
+  }
+
+  .illustration {
     position: relative;
-    width: fit-content;
-    height:auto;
-    z-index: 2;
+    margin-top: 10em;
+    width: auto;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home h1 {
+    margin: 0;
+    font-family: "Antipasto Pro", sans-serif;
+    font-size: 6em;
+    color: #92acef;
+  }
+
+  .home p {
+    font-family: "Antipasto Pro", sans-serif;
+    color: #aeaeae;
+    font-size: 1.8em;
+    width: 60%;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  .home button {
+    width: auto;
+    padding: 8px 24px;
+    border: 2px solid #92acef;
+    background-color: white;
+    border-radius: 14px;
+    margin: 0;
+    color: #92acef;
+    font-size: 1.4em;
+    font-weight: 600;
+    font-family: Inter, sans-serif;
+    transition: 0.5s;
+  }
+
+  .home button:hover {
+    background-color: #92acef;
+    color: white;
+    border: none;
+  }
 }
 
+@media (max-width: 767px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      height: auto;
+    }
+  
+    .error404 {
+      color: #aad2c4;
+      font-family: "Nunito", "Arial Rounded", sans-serif;
+      font-style: normal;
+      font-size: 10em;
+      font-weight: 700;
+      line-height: 100%;
+      position: absolute;
+    }
+  
+    .illustration {
+      position: relative;
+      margin-top: 6.5em;
+      width: 50%;
+    }
+  
+    .home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .home h1 {
+      margin: 0;
+      font-family: "Antipasto Pro", sans-serif;
+      font-size: 4em;
+      color: #92acef;
+    }
+  
+    .home p {
+      font-family: "Antipasto Pro", sans-serif;
+      color: #aeaeae;
+      font-size: 1.2em;
+      width: 60%;
+      margin-top: 20px;
+      text-align: center;
+      line-height: 25px;
+      margin-bottom: 10px;
+    }
+  
+    .home button {
+      width: auto;
+      padding: 8px 24px;
+      border: 2px solid #92acef;
+      background-color: white;
+      border-radius: 14px;
+      margin: 0;
+      color: #92acef;
+      font-size: 1em;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      transition: 0.5s;
+    }
+  
+    .home button:hover {
+      background-color: #92acef;
+      color: white;
+      border: none;
+    }
+  }

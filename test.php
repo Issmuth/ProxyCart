@@ -1,5 +1,4 @@
 <?php
-use Doctrine\ORM\Tools\SchemaTool;
 require 'models/baseModel.php';
 require 'models/city.php';
 require 'models/user.php';
@@ -9,6 +8,7 @@ require 'models/order.php';
 require 'models/product.php';
 require 'models/engine/file_storage.php';
 require 'models/engine/db_storage.php';
+
 
 $city_data = [
     "firstName" => "Aymen",

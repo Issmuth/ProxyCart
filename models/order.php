@@ -1,5 +1,5 @@
 <?php
-require_once 'models/baseModel.php';
+require_once __DIR__ . '/baseModel.php';
 use \Doctrine\ORM\Mapping as ORM;
 use \Doctrine\DBAL\Types\Types;
 

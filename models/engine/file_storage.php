@@ -1,12 +1,12 @@
 <?php
 //file storage module using json serializaion and deserialization
-require_once 'models/baseModel.php';
-require_once 'models/user.php';
-require_once 'models/city.php';
-require_once 'models/order.php';
-require_once 'models/dispatch.php';
-require_once 'models/product.php';
-require_once 'models/route.php';
+require_once __DIR__ . '/../baseModel.php';
+require_once __DIR__ . '/../user.php';
+require_once __DIR__ . '/../city.php';
+require_once __DIR__ . '/../order.php';
+require_once __DIR__ . '/../dispatch.php';
+require_once __DIR__ . '/../product.php';
+require_once __DIR__ . '/../route.php';
 
 class FileStorage {
     //File Storage class

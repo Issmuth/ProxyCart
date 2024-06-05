@@ -1,5 +1,5 @@
 <?php
-require_once 'models/baseModel.php';
+require_once __DIR__ . '/baseModel.php';
 use \Doctrine\ORM\Mapping as ORM;
 use \Doctrine\DBAL\Types\Types;
 
@@ -33,7 +33,9 @@ class Route extends BaseModel {
         foreach ($kwargs as $key => $value) {
             if ($key == "created_at" || $key == "updated_at") {
                 $this->$key = DateTime::createFromFormat('Y-m-d H:i:s.u', $value['date']);
-            } else {
+            } #elseif ($key == "leaving_date" || $key == "return_date") {
+               # $this->$key = DateTime::createFromFormat('Y-m-d', $value);
+             else {
                 $this->$key = $value;
             }
         }
