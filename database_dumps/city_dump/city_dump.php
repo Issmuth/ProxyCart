@@ -18,4 +18,6 @@ function dump_cities() {
     }
     $db->save();
 }
+
+dump_cities();
 ?>

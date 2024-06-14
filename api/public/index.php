@@ -74,7 +74,7 @@ $app->put('/api/city/{id}', function (Request $request, Response $response, arra
 /** User Routes **/
 $app->get('/api/users', function (Request $request, Response $response) {
     global $storage;
-    $users = json_encode($storage->all('User'));
+    $users = json_encode($storage->all('User'), true);
     $response->getBody()->write($users);
     return $response->withHeader('Content-Type', 'application/json');
 });
@@ -126,12 +126,12 @@ $app->put('/api/user/{id}', function (Request $request, Response $response, arra
 /** Route routes :D **/
 $app->get('/api/routes', function (Request $request, Response $response) {
     global $storage;
-    $routes = json_encode($storage->all('Routes'));
+    $routes = json_encode($storage->all('Route'));
     $response->getBody()->write($routes);
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-$app->get('/api/routes/{id}', function(Request $request, Response $response, array $args) {
+$app->get('/api/route/{id}', function(Request $request, Response $response, array $args) {
     global $storage;
     $route = json_encode($storage->get($args['id'], 'Route'));
     $response->getBody()->write($route);
@@ -177,7 +177,7 @@ $app->put('/api/route/{id}', function (Request $request, Response $response, arr
 //------------------------------------------------------------------------------------------//
 
 /** Order routes **/
-$app->get('/api/order', function (Request $request, Response $response) {
+$app->get('/api/orders', function (Request $request, Response $response) {
     global $storage;
     $order = json_encode($storage->all('Order'));
     $response->getBody()->write($order);
@@ -328,10 +328,6 @@ $app->put('/api/dispatch/{id}', function (Request $request, Response $response, 
     }
     $storage->new($dispatch);
     $storage->save();
-});
-
-$app->options('/{routes:.+}', function ($request, $response, $args) {
-    return $response;
 });
 
 $app->add(function ($request, $handler) {

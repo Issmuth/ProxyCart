@@ -9,17 +9,38 @@ require 'models/product.php';
 require 'models/engine/file_storage.php';
 require 'models/engine/db_storage.php';
 
+$storage = new DBStorage();
 
-$city_data = [
-    "firstName" => "Aymen",
-    "lastName" => "Mahir",
-    "email" => 'imerz11@gmail.com',
-    "password" => '123abc'
-];
+$routes = $storage->all('Route');
 
-$user = new User($city_data);
+$proxies =  $routes['Route.12a4236d-29bb-4106-bd8c-cb2bd8b59d58']->proxy;
 
-echo $user->password;
+foreach($proxies as $proxy) {
+    echo $proxy->getId();
+}
+// foreach($routes as $key => $value) {
+//     echo $value;
+// }
+// $cities = $storage->all('City');
+// $users = $storage->all('User');
+
+// $start = strtotime('now');
+// $end = strtotime('+1 year');
+// $city_data = [
+//     "is_round" => true,
+//     "leaving_date" => date('Y-m-d', rand($start, $end)),
+//     "return_date" => date('Y-m-d', rand($start, $end)),
+//     "destination" => $cities[array_rand($cities)],
+//     "origin" => $cities[array_rand($cities)],
+//     "proxy" => $users[array_rand($users)]
+// ];
+
+// $route = new Route($city_data);
+// echo $route->getId();
+// $storage->new($route);
+
+// $storage->save();
+
 
 // $city = new City($city_data);
 // $storage->entityManager->persist($city);

@@ -1,0 +1,99 @@
+
+body {
+    margin: 0;
+  }
+  
+  .bg {
+    top: 0;
+    position: absolute;
+    z-index: 0;
+    width: 4vw;
+    height: auto;
+  }
+  
+  #bg1 {
+    margin-right: 0;
+    margin-top: 300px;
+  }
+  
+  #bg2 {
+    margin-top: 160px;
+    margin-left: 90%;
+  }
+  
+  /**** Navbar ****/
+  nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    border-bottom: 0.1px solid #aeaeae;
+  }
+  
+  .navbar-items {
+    display: flex;
+    width: 50vw;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3vw;
+  }
+  
+  #nav-item {
+    font-size: 0.96em;
+    font-family: Inter, sans-serif;
+    font-weight: 520;
+    color: #aad2c4;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  #nav-item:hover {
+    color: #92acef;
+  }
+  
+  #signin {
+    color: #aad2c4;
+    margin-right: 64px;
+    border-radius: 14px;
+    border: 1.5px;
+    background: transparent;
+    font-size: 0.96em;
+    font-family: Inter, sans-serif;
+    padding: 8px 12px;
+    font-weight: 500;
+    width: 10vw;
+    border-color: #aad2c4;
+    border-style: solid;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  #signin:hover {
+    background-color: #aad2c4;
+    color: white;
+  }
+  
+  #signin.hidden {
+    display: none;
+  }
+  
+  #nav-item.myspace {
+    margin-right: 64px;
+  }
+  
+  #nav-item.myspace.hidden {
+    display: none;
+  }
+  
+  #toplogo {
+    max-width: 120px;
+    max-height: auto;
+    margin-left: 40px;
+    margin-bottom: 16px;
+    margin-top: 12px;
+  }

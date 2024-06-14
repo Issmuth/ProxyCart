@@ -19,9 +19,13 @@ class DBStorage {
     public $entityManager;
     public $config;
     public $connection;
+
     function __construct()
     {
-        $this->config = ORMSetup::createAttributeMetadataConfiguration(array(__DIR__ . '/../'));
+        $this->config = ORMSetup::createAttributeMetadataConfiguration(array(__DIR__ . '/../'), true,  __DIR__ . '/../../proxy', null, false);
+        $this->config->setProxyNamespace('Proxy');
+        $this->config->setAutoGenerateProxyClasses(true);
+
         $params = [
             'dbname' => 'proxy_cart',
             'user' => 'pc_admin',
@@ -31,6 +35,8 @@ class DBStorage {
         ];
         $this->connection = DriverManager::getConnection($params, $this->config);
         $this->entityManager = new EntityManager($this->connection, $this->config);
+        $proxyFactory = $this->entityManager->getProxyFactory();
+        $proxyFactory->generateProxyClasses($this->entityManager->getMetadataFactory()->getAllMetadata());
     }
 
     public function all($class = null) {
@@ -66,6 +72,13 @@ class DBStorage {
             return null;
         }
         return $this->entityManager->getRepository($this->classes[$class])->find($id);
+    }
+    
+    public function getByEmail($email, $class) {
+        if (!$class || !$email|| !isset($this->classes[$class])) {
+            return null;
+        }
+        return $this->entityManager->getRepository($this->classes[$class])->findOneBy(['email' => $email]);
     }
 
     public function count($class) {

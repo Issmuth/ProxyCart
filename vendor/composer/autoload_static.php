@@ -73,6 +73,7 @@ class ComposerStaticInitfb6dbad4cfbcede79d37574f2c6b3583
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
+            'Proxy\\' => 6,
         ),
         'M' => 
         array (
@@ -197,8 +198,8 @@ class ComposerStaticInitfb6dbad4cfbcede79d37574f2c6b3583
         ),
         'Slim\\Views\\' => 
         array (
-            0 => __DIR__ . '/..' . '/slim/twig-view/src',
-            1 => __DIR__ . '/..' . '/slim/php-view/src',
+            0 => __DIR__ . '/..' . '/slim/php-view/src',
+            1 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
         'Slim\\Psr7\\' => 
         array (
@@ -245,6 +246,10 @@ class ComposerStaticInitfb6dbad4cfbcede79d37574f2c6b3583
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Proxy\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/proxy',
         ),
         'Models\\' => 
         array (

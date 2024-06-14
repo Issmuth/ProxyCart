@@ -2,141 +2,45 @@ body {
   margin: 0;
 }
 
-@media (min-width: 768px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: auto;
-  }
+ :root {
+  --size: 25vw;
+  --button-size: 1.2em;
+}
 
-  .error404 {
-    color: #aad2c4;
-    font-family: "Nunito", "Arial Rounded", sans-serif;
-    font-style: normal;
-    font-size: 16em;
-    font-weight: 700;
-    line-height: 100%;
-    position: absolute;
-  }
-
-  .illustration {
-    position: relative;
-    margin-top: 10em;
-    width: auto;
-  }
-
-  .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .home h1 {
-    margin: 0;
-    font-family: "Antipasto Pro", sans-serif;
-    font-size: 6em;
-    color: #92acef;
-  }
-
-  .home p {
-    font-family: "Antipasto Pro", sans-serif;
-    color: #aeaeae;
-    font-size: 1.8em;
-    width: 60%;
-    margin-top: 20px;
-    text-align: center;
-    line-height: 30px;
-  }
-
-  .home button {
-    width: auto;
-    padding: 8px 24px;
-    border: 2px solid #92acef;
-    background-color: white;
-    border-radius: 14px;
-    margin: 0;
-    color: #92acef;
-    font-size: 1.4em;
-    font-weight: 600;
-    font-family: Inter, sans-serif;
-    transition: 0.5s;
-  }
-
-  .home button:hover {
-    background-color: #92acef;
-    color: white;
-    border: none;
+@media (max-width: 800px) {
+  :root {
+    --size: 50vw;
+    --button-size: .9em;
   }
 }
 
-@media (max-width: 767px) {
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100vw;
-      height: auto;
-    }
-  
-    .error404 {
-      color: #aad2c4;
-      font-family: "Nunito", "Arial Rounded", sans-serif;
-      font-style: normal;
-      font-size: 10em;
-      font-weight: 700;
-      line-height: 100%;
-      position: absolute;
-    }
-  
-    .illustration {
-      position: relative;
-      margin-top: 6.5em;
-      width: 50%;
-    }
-  
-    .home {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .home h1 {
-      margin: 0;
-      font-family: "Antipasto Pro", sans-serif;
-      font-size: 4em;
-      color: #92acef;
-    }
-  
-    .home p {
-      font-family: "Antipasto Pro", sans-serif;
-      color: #aeaeae;
-      font-size: 1.2em;
-      width: 60%;
-      margin-top: 20px;
-      text-align: center;
-      line-height: 25px;
-      margin-bottom: 10px;
-    }
-  
-    .home button {
-      width: auto;
-      padding: 8px 24px;
-      border: 2px solid #92acef;
-      background-color: white;
-      border-radius: 14px;
-      margin: 0;
-      color: #92acef;
-      font-size: 1em;
-      font-weight: 600;
-      font-family: Inter, sans-serif;
-      transition: 0.5s;
-    }
-  
-    .home button:hover {
-      background-color: #92acef;
-      color: white;
-      border: none;
-    }
-  }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container  button {
+  border: 1.5px solid #92acef;
+  color: #92acef;
+  font-size: var(--button-size);
+  background-color: white;
+  border-radius: 14px;
+  width: auto;
+  padding: 8px 24px;
+  transition: .5s;
+}
+
+.container button:hover {
+  color: white;
+  background-color: #92acef;
+}
+
+.illustration {
+  width: var(--size);
+  height: auto;
+  margin-bottom: 20px;
+  margin-top: 10vh;
+}

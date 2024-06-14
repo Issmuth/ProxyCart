@@ -2,9 +2,10 @@
 require_once __DIR__ . '/baseModel.php';
 use \Doctrine\ORM\Mapping as ORM;
 use \Doctrine\DBAL\Types\Types;
+use JsonSerializable;
 
 #[ORM\Entity]
-class City extends BaseModel {
+class City extends BaseModel implements JsonSerializable{
     #[ORM\Column(type: Types::STRING, nullable: false)]
     public $name = "";
     
@@ -20,6 +21,16 @@ class City extends BaseModel {
                 $this->$key = $value;
             }
         }
+    }
+
+    public function jsonSerialize(): array {
+        return [
+            'id' => $this->getId(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'name' => $this->name,
+            'country' => $this->country,
+        ];
     }
 }
 ?>

@@ -4,6 +4,7 @@ use \Doctrine\ORM\Mapping as ORM;
 use \Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity()]
+#[ORM\Table(name: '`Order`')]
 class Order extends BaseModel {
     #[ORM\OneToOne(targetEntity: City::class)]
     #[ORM\JoinColumn(name: 'source_city', referencedColumnName: 'id')]

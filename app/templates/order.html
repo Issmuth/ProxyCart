@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/order.css">
+    <link rel="stylesheet" href="../static/styles/orders.css">
+    <link rel="stylesheet" href="../static/styles/navbar.css">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <img id="bgtop" class="bg" src="../static/images/Group 20.png" alt="" />
@@ -13,24 +16,65 @@
         <img id="bg2" class="bg" src="../static/images/Group 21.png" alt="" />
         <img id="bg3" class="bg" src="../static/images/Ellipse 10.png" alt="" />
         <nav>
-          <img id="toplogo" src="../static/images/Logo.png" alt="logo" />
-          <div class="navbar-items">
-            <a id="nav-item" href="">Orders</a>
-            <a id="nav-item" href="">Routes</a>
-            <a id="nav-item" href="">My Space</a>
-            <button id="signin">Sign in</button>
-          </div>
+            <img id="toplogo" src="../static/images/Logo.png" alt="logo" />
+            <div class="navbar-items">
+                <a id="nav-item" href="">Orders</a>
+                <a id="nav-item" href="">Routes</a>
+                <a id="nav-item" href="">My Space</a>
+                <button id="signin">Sign in</button>
+            </div>
         </nav>
     </header>
-    <section class="order">
-        <img class="order-img" src="../static/images/city-icon.jpg">
-        <div class="order-info">
-            <h1>Product</h1>
-            <div>
-                from &nbsp; Addis Ababa 
-                to &nbsp; Adama
+
+    <form id="order-form">
+        <div class="info left">
+            <div class="order-info">
+                <img class="order-img" src="../static/images/city-icon.jpg">
+                <div class="file">
+                    <input type="file" name="product-img" id="product-image">
+                </div>
+                <div>
+                    <textarea pname="description" id="description" placeholder="Description of the product"></textarea>
+                </div>
             </div>
+        <div class="divider"></div>
         </div>
-    </section>
+        <div class="info right">
+                <div class="form login">
+                    <h1>Make your order</h1>
+                    <div class="product-info">
+                        <div class="input-box">
+                            <input type="text" id="name" name="password" required placeholder="&#8203">
+                            <label>Name</label>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" id="url" name="url" required placeholder="&#8203">
+                            <label><img class="img-icon" src="../static/images/Link.png">Product URL</label>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="input-box" class="price">
+                            <input type="text" name="price" required placeholder="&#8203">
+                            <label><img src="../static/images/coin.svg" class="img-icon">Price</label>
+                        </div>
+                        <div class="input-box" class="price">
+                            <input type="text" name="reward" required placeholder="&#8203">
+                            <label><img src="../static/images/gift.svg" class="img-icon">Reward</label>
+                        </div>
+                        <div class="input-box date">
+                            <img class="img-icon" src="../static/images/clock.svg" alt="">
+                            Deadline <input type="date" id="date" name="date" required placeholder="&#8203">
+                        </div>
+                    </div>
+                    <div class="location">
+                        <input type="text" name="from" id="from" placeholder="From">
+                        <input type="text" name="to" id="to" placeholder="To" required>
+                        <img class="img-icon swap" src="../static/images/Asset 1.png" alt="">
+                    </div>
+                    <button type="submit" class="btn">Order</button>
+                </div>
+        </div>
+    </form>
 </body>
+
 </html>
