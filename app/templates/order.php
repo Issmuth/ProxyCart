@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/orders.css">
-    <link rel="stylesheet" href="../static/styles/navbar.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../static/styles/orders.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>">
+    <link rel="stylesheet" href="../static/styles/navbar.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>">
+    <title>Order</title>
+    <link rel="shortcut icon" href="../static/images/favicon.png?" type="image/x-icon">
+    <script src="../static/scripts/jquery-3.6.0.min.js"></script>
+    <script src="../static/scripts/order.js?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>"></script>
 </head>
 
 <body>
@@ -18,23 +21,22 @@
         <nav>
             <img id="toplogo" src="../static/images/Logo.png" alt="logo" />
             <div class="navbar-items">
-                <a id="nav-item" href="">Orders</a>
-                <a id="nav-item" href="">Routes</a>
-                <a id="nav-item" href="">My Space</a>
-                <button id="signin">Sign in</button>
+                <a id="nav-item" href="/?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Home</a>
+                <a id="nav-item" href="/travel?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Travel</a>
+                <a id="nav-item" class="myspace" href="">My Space</a>
             </div>
         </nav>
     </header>
+
+    <div id="success" class="post-status success">Order Successful</div>
+    <div id="fail" class="post-status failure">Failed to make Order. Try Again</div>
 
     <form id="order-form">
         <div class="info left">
             <div class="order-info">
                 <img class="order-img" src="../static/images/city-icon.jpg">
-                <div class="file">
-                    <input type="file" name="product-img" id="product-image">
-                </div>
                 <div>
-                    <textarea pname="description" id="description" placeholder="Description of the product"></textarea>
+                    <textarea pname="description" id="description" placeholder="Description of the product" maxlength="1024"></textarea>
                 </div>
             </div>
         <div class="divider"></div>
@@ -54,11 +56,11 @@
                     </div>
                     <div class="product-info">
                         <div class="input-box" class="price">
-                            <input type="text" name="price" required placeholder="&#8203">
+                            <input type="text" name="price" id="price" required placeholder="&#8203">
                             <label><img src="../static/images/coin.svg" class="img-icon">Price</label>
                         </div>
                         <div class="input-box" class="price">
-                            <input type="text" name="reward" required placeholder="&#8203">
+                            <input type="text" name="reward" id="reward" required placeholder="&#8203">
                             <label><img src="../static/images/gift.svg" class="img-icon">Reward</label>
                         </div>
                         <div class="input-box date">

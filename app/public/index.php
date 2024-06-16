@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\ORM\Query\Expr\Orx;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -118,6 +119,40 @@ $app->get('/route', function (Request $request, Response $response) use ($render
     return $renderer->render($response, 'route-info.php');
 });
 
+$app->get('/orderpost', function(Request $request, Response $response) use ($renderer) {
+    return $renderer->render($response, 'order.php');
+});
+
+$app->post('/orderpost', function (Request $request, Response $response) use($storage) {
+    $dataJson = $request->getBody()->getContents();
+    $data = json_decode($dataJson, true);
+    $productData = [];
+    $productData['name'] = $data['name'];
+    $productData['link'] = $data['link'];
+    $productData['price'] = $data['price'];
+    $productData['description'] = $data['description'];
+    $productData['patron'] = $storage->get($_SESSION['user'], 'User');
+    $product = new Product($productData);
+
+    $cityOrigin = $storage->entityManager->getRepository(City::class)->findOneBy(['name' => ucwords($data['origin'])]);
+    $cityDestination = $storage->entityManager->getRepository(City::class)->findOneBy(['name' => ucwords($data['destination'])]);
+    $orderData['reward_sum'] = $data['reward'];
+    $orderData['deadline'] = $data['deadline'];
+    $orderData['source'] = $cityOrigin;
+    $orderData['destination'] = $cityDestination;
+    $orderData['product_id'] = $product;
+    $order = new Order($orderData);
+    try{
+        $storage->new($product);
+        $storage->new($order);
+        $storage->save();
+        $response->getBody()->write(json_encode(["post" => 'success']));
+    } catch (Exception $e) {
+        $response->getBody()->write(json_encode(["post" => 'failed', "error" => $e->__toString()]));
+    }
+    return $response->withHeader("Content-Type", "application/json");
+});
+
 $error404 = function (
     Request $request,
     HttpNotFoundException $exception,
@@ -137,8 +172,8 @@ $app->get('/error404', function (Request $request, Response $response) use ($ren
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, $error404);
-$app->options('/{routes:.+}', function ($request, $response, $args) {
-    return $response;
-});
+// $app->options('/{routes:.+}', function ($request, $response, $args) {
+//     return $response;
+// });
 
 $app->run();

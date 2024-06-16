@@ -224,3 +224,19 @@
     font-family: Inter, Helvetica, sans-serif;
     color: #92acef;
 }
+
+#signin-first {
+    display: none;
+    position: fixed;
+    width: auto;
+    z-index: 3;
+    top: 80px;
+    background-color: white;
+    border: 1px solid #92acef;
+    border-radius: 14px;
+    padding: 8px 24px;
+    font-size: .8em;
+    font-family: Inter, Helvetica, sans-serif;
+    color: #92acef;
+    margin-left: 38%;
+}

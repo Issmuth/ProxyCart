@@ -1,4 +1,19 @@
 $(function () {
+
+  $('.navbar-items a').click(function (e) { 
+    let session = new URLSearchParams(window.location.search).get('ss');
+    e.preventDefault();
+    if (session) {
+      window.location.href = e.target.href;
+    } else {
+      $(".popup-form").removeClass("hidden");
+      $("#signin-first").fadeIn(500);
+      setTimeout(() => {
+        $("#signin-first").fadeOut(500);
+      }, 3000);
+    }
+  });
+
   let url = "http://localhost:5000/api/routes";
   fetch(url)
     .then((response) => response.json())
@@ -20,5 +35,3 @@ $(function () {
       });
     });
 });
-// document.getElementById('hello').onclick()
-// });

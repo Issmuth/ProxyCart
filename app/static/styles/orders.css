@@ -237,3 +237,27 @@
   filter: contrast(150%);
 }
 
+.myspace {
+  margin-right: 20px;
+}
+
+.post-status {
+  position: fixed;
+  display: none;
+  border: 1.5px solid #92acef;
+  margin-top: 100px;
+  margin-left: 35%;
+  padding: 8px;
+  width: auto;
+  font-size: .9em;
+  color: #92acef;
+  border-radius: 14px;
+  background-color: white;
+  font-family: Inter, Helvetica, sans-serif;
+  z-index: 3;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset; /* change 'white' to the background color you want */
+  box-shadow: 0 0 0px 1000px white inset; /* change 'white' to the background color you want */
+}

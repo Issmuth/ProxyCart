@@ -29,6 +29,8 @@ class Order extends BaseModel {
         foreach ($kwargs as $key => $value) {
             if ($key == "created_at" || $key == "updated_at") {
                 $this->$key = DateTime::createFromFormat('Y-m-d H:i:s.u', $value['date']);
+            } elseif ($key == "deadline" || $key == "return_date") {
+                $this->$key = DateTime::createFromFormat('Y-m-d', $value);
             } else {
                 $this->$key = $value;
             }

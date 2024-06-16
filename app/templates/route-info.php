@@ -20,8 +20,7 @@
           <div class="navbar-items">
             <a id="nav-item" href="">Orders</a>
             <a id="nav-item" href="">Routes</a>
-            <a id="nav-item" href="">My Space</a>
-            <button id="signin">Sign in</button>
+            <a id="nav-item" class="myspace" href="">My Space</a>
           </div>
         </nav>
     </header>

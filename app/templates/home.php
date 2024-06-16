@@ -23,13 +23,15 @@
     <nav>
       <img id="toplogo" src="../static/images/Logo.png" alt="logo" />
       <div class="navbar-items">
-        <a id="nav-item" href="">Order</a>
+        <a id="nav-item" href="/orderpost?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Order</a>
         <a id="nav-item" href="/travel?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Travel</a>
         <a id="nav-item" class="myspace hidden" href="">My Space</a>
         <button id="signin">Sign in</button>
       </div>
     </nav>
   </header>
+
+  <div id="signin-first">Please login or create an account first.</div>
 
   <!-- SignUp/Login -->
   <section class="popup-form hidden">
