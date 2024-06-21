@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../static/styles/home.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>" />
-  <link rel="stylesheet" href="../static/styles/login.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>" />
-  <link rel="stylesheet" href="../static/styles/navbar.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>" />
+  <link rel="stylesheet" href="../static/styles/home.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString() ?>" />
+  <link rel="stylesheet" href="../static/styles/login.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString() ?>" />
+  <link rel="stylesheet" href="../static/styles/navbar.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString() ?>" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antipasto Pro:wght@700&display=swap" />
   <link rel="shortcut icon" href="../static/images/favicon.png?" type="image/x-icon">
   <script src="../static/scripts/jquery-3.6.0.min.js"></script>
-  <script src="../static/scripts/home.js?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>"></script>
-  <script src="../static/scripts/login.js?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>"></script>
+  <script src="../static/scripts/home.js?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString() ?>"></script>
+  <script src="../static/scripts/login.js?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString() ?>"></script>
   <title>Home</title>
 </head>
 
@@ -23,9 +23,9 @@
     <nav>
       <img id="toplogo" src="../static/images/Logo.png" alt="logo" />
       <div class="navbar-items">
-        <a id="nav-item" href="/orderpost?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Order</a>
-        <a id="nav-item" href="/travel?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Travel</a>
-        <a id="nav-item" class="myspace hidden" href="">My Space</a>
+        <a id="nav-item" href="/orderpost?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user'] ?>">Order</a>
+        <a id="nav-item" href="/travel?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user'] ?>">Travel</a>
+        <a id="nav-item" class="myspace hidden" href="/myspace?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user'] ?>">My Space</a>
         <button id="signin">Sign in</button>
       </div>
     </nav>
@@ -112,7 +112,7 @@
 
     <div class="route-page">
       <label id="orders-grid" class="grid-label">Orders</label>
-      <div class="card-grid">
+      <div id="order-grid" class="card-grid">
         <!--Orders cards-->
       </div>
 
@@ -126,14 +126,25 @@
     <div class="cta-container">
       <div class="tagline">Join the community</div>
       <div class="cta-button">
-        <button>Make an order</button>
-        <button>Post your trip</button>
+        <button id="order-button" >Make an order</button>
+        <button id="travel-button">Post your trip</button>
       </div>
     </div>
     <img src="../static/images/image-min.jpg">
   </div>
 
+  <div class="divider"></div>
+
   <div class="navigation-footer">
+      <div class="right">
+        <div class="proxy-cart topic">© Proxy Cart Inc.</div>
+        <div class="social-icons">
+          <img class="buttons-icon" alt="" src="../static/images/Icon.svg">
+          <img class="buttons-icon" alt="" src="../static/images/Icon2.svg">
+          <img class="buttons-icon" alt="" src="../static/images/Icon3.svg">
+          <img class="buttons-icon" alt="" src="../static/images/Icon4.svg">
+        </div>
+      </div>
     <div class="items1">
       <div class="topic">Learn More</div>
       <div class="page">About Us</div>
@@ -146,16 +157,6 @@
       <div class="page">Privacy Policy</div>
       <div class="page">Trust and Safety</div>
     </div>
-    <div class="proxy-cart">© Proxy Cart Inc.</div>
-    <div class="divider">
-    </div>
-    <div class="social-icons">
-      <img class="buttons-icon" alt="" src="../static/images/Icon.svg">
-      <img class="buttons-icon" alt="" src="../static/images/Icon2.svg">
-      <img class="buttons-icon" alt="" src="../static/images/Icon3.svg">
-      <img class="buttons-icon" alt="" src="../static/images/Icon4.svg">
-    </div>
-    </footer>
 </body>
 
 </html>

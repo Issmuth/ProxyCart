@@ -23,7 +23,7 @@
             <div class="navbar-items">
                 <a id="nav-item" href="/?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Home</a>
                 <a id="nav-item" href="/travel?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Travel</a>
-                <a id="nav-item" class="myspace" href="">My Space</a>
+                <a id="nav-item" class="myspace" href="/myspace?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user'] ?>">My Space</a>
             </div>
         </nav>
     </header>

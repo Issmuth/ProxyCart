@@ -23,7 +23,18 @@ $(function () {
     let origin = document.getElementById('from').value;
     let destination = document.getElementById('to').value;
     let leaving_date = document.getElementById('leaving-date').value;
-    let return_date = document.getElementById('return-date').value;
+    let is_round = document.getElementById('toggleButton');
+    let return_date;
+    if (is_round == 'round') {
+      is_round = true;
+       return_date = document.getElementById('return-date').value;
+    } else {
+      is_round = false;
+      return_date = null;
+    }
+
+
+
     
     fetch("http://localhost/travelpost", {
         method: "POST",
@@ -42,6 +53,7 @@ $(function () {
                 $("#success").fadeOut(500);
               }, 3000);
             } else {
+              console.log(data.error);
               $('#fail').fadeIn(500);
               setTimeout(() => {
                 $("#fail").fadeOut(500);

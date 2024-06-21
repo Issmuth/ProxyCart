@@ -18,9 +18,9 @@
         <nav>
           <img id="toplogo" src="../static/images/Logo.png" alt="logo" />
           <div class="navbar-items">
-            <a id="nav-item" href="">Orders</a>
-            <a id="nav-item" href="">Routes</a>
-            <a id="nav-item" class="myspace" href="">My Space</a>
+            <a id="nav-item" href="/?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Home</a>
+            <a id="nav-item" href="/orderpost?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Order</a>
+            <a id="nav-item" class="myspace" href="/myspace?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user'] ?>">My Space</a>
           </div>
         </nav>
     </header>

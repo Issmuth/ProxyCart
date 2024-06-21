@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/travel.css?da<?php rand() ?>">
-    <link rel="stylesheet" href="../static/styles/navbar.css?<?php rand(100, 30000) ?>">
-    <link rel="stylesheet" href="../static/styles/login.css?<?php rand(100, 30000) ?>">
+    <link rel="stylesheet" href="../static/styles/travel.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>">
+    <link rel="stylesheet" href="../static/styles/navbar.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>">
+    <link rel="stylesheet" href="../static/styles/login.css?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>">
     <script src="../static/scripts/jquery-3.6.0.min.js"></script>
-    <script src="../static/scripts/travel.js?ajs<?php rand(100, 30000)?>"></script>
+    <script src="../static/scripts/travel.js?<?php echo \Ramsey\Uuid\Uuid::uuid4()->__toString()?>"></script>
     <title>Document</title>
 </head>
 
@@ -21,7 +21,7 @@
             <div class="navbar-items">
                 <a id="nav-item" href="/?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user']?>">Home</a>
                 <a id="nav-item" href="">Order</a>
-                <a id="nav-item" class="myspace " href="">My Space</a>
+                <a id="nav-item" class="myspace " href="/myspace?ss=<?php echo $_SESSION['session'] . '&user=' . $_SESSION['user'] ?>">My Space</a>
             </div>
         </nav>
     </header>

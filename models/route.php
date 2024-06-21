@@ -12,7 +12,7 @@ class Route extends BaseModel implements JsonSerializable{
     #[ORM\Column(type: Types::BOOLEAN)]
     public $is_round;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     public $return_date;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -24,11 +24,11 @@ class Route extends BaseModel implements JsonSerializable{
     #[ORM\ManyToMany(targetEntity: User::class)]
     public $proxy;
 
-    #[ORM\OneToOne(targetEntity: City::class)]
+    #[ORM\ManyToOne(targetEntity: City::class)]
     #[ORM\JoinColumn(name: 'origin_city', referencedColumnName: 'id')]
     public $origin;
     
-    #[ORM\OneToOne(targetEntity: City::class)]
+    #[ORM\ManyToOne(targetEntity: City::class)]
     #[ORM\JoinColumn(name: 'destination_city', referencedColumnName: 'id')]
     public $destination;
 
@@ -39,7 +39,9 @@ class Route extends BaseModel implements JsonSerializable{
             if ($key == "created_at" || $key == "updated_at") {
                 $this->$key = DateTime::createFromFormat('Y-m-d H:i:s.u', $value['date']);
             } elseif ($key == "leaving_date" || $key == "return_date") {
+            if ($value){
                $this->$key = DateTime::createFromFormat('Y-m-d', $value);
+            }
             } elseif ($key == 'proxy') {
                 $this->proxy->add($value);
             }

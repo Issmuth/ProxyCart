@@ -2,19 +2,20 @@
 require_once __DIR__ . '/baseModel.php';
 use \Doctrine\ORM\Mapping as ORM;
 use \Doctrine\DBAL\Types\Types;
+use JsonSerializable;
 
 #[ORM\Entity()]
 #[ORM\Table(name: '`Order`')]
-class Order extends BaseModel {
-    #[ORM\OneToOne(targetEntity: City::class)]
+class Order extends BaseModel implements JsonSerializable{
+    #[ORM\ManyToOne(targetEntity: City::class)]
     #[ORM\JoinColumn(name: 'source_city', referencedColumnName: 'id')]
     public $source;
 
-    #[ORM\OneToOne(targetEntity: City::class)]
+    #[ORM\ManyToOne(targetEntity: City::class)]
     #[ORM\JoinColumn(name: 'destination_city', referencedColumnName: 'id')]
     public $destination;
 
-    #[ORM\OneToOne(targetEntity: Product::class)]
+    #[ORM\ManyToOne(targetEntity: Product::class)]
     #[ORM\JoinColumn(name: 'product_id', referencedColumnName: 'id')]
     public $product_id;
 
@@ -35,6 +36,19 @@ class Order extends BaseModel {
                 $this->$key = $value;
             }
         }
+    }
+
+    public function jsonSerialize(): array {
+        return [
+            'id' => $this->getId(),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'source' => $this->source->jsonSerialize(),
+            'destination' => $this->destination->jsonSerialize(),
+            'product_id' => $this->product_id->jsonSerialize(),
+            'reward_sum' => $this->reward_sum,
+            'deadline' => $this->deadline,
+        ];
     }
 }
 ?>

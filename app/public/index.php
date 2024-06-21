@@ -22,8 +22,6 @@ $app = AppFactory::create();
 $app->addRoutingMiddleware();
 $storage = new DBStorage();
 $renderer = new PhpRenderer(__DIR__ . '/../templates');
-ini_set('session.cookie_lifetime', 3600);
-ini_set('session.gc_maxlifetime', 3600);
 session_start();
 
 $app->get('/', function (Request $request, Response $response) use ($renderer) {
@@ -109,7 +107,7 @@ $app->post('/travelpost', function (Request $request, Response $response) use($s
         $storage->save($route);
         $response->getBody()->write(json_encode(["post" => 'success']));
     } catch (Exception $e) {
-        $response->getBody()->write(json_encode(["post" => 'failed']));
+        $response->getBody()->write(json_encode(["post" => 'failed', 'error'=> $e->__toString()]));
     }
     return $response->withHeader("Content-Type", "application/json");
 
@@ -132,7 +130,7 @@ $app->post('/orderpost', function (Request $request, Response $response) use($st
     $productData['price'] = $data['price'];
     $productData['description'] = $data['description'];
     $productData['patron'] = $storage->get($_SESSION['user'], 'User');
-    $product = new Product($productData);
+    $product = new Product($productData);   
 
     $cityOrigin = $storage->entityManager->getRepository(City::class)->findOneBy(['name' => ucwords($data['origin'])]);
     $cityDestination = $storage->entityManager->getRepository(City::class)->findOneBy(['name' => ucwords($data['destination'])]);
@@ -151,6 +149,14 @@ $app->post('/orderpost', function (Request $request, Response $response) use($st
         $response->getBody()->write(json_encode(["post" => 'failed', "error" => $e->__toString()]));
     }
     return $response->withHeader("Content-Type", "application/json");
+});
+
+$app->get('/order',  function (Request $request, Response $response) use($renderer) {
+    return $renderer->render($response, 'order-info.php');
+});
+
+$app->get('/myspace', function (Request $request, Response $response) use($renderer) {
+    return $renderer->render($response, 'myspace.php');
 });
 
 $error404 = function (
